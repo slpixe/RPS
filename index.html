@@ -2,59 +2,141 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rock Paper Scissors</title>
+
+  <style>
+    body {
+      height: 100vh;
+      margin: 10%;
+      background-color: hsl(34, 53%, 82%);
+      background-image: repeating-linear-gradient(45deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px, hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px, hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px, hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px, hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 120px, hsla(197, 62%, 11%, 0.5) 120px, hsla(197, 62%, 11%, 0.5) 140px), repeating-linear-gradient(135deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px, hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px, hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px, hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px, hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 140px, hsla(197, 62%, 11%, 0.5) 140px, hsla(197, 62%, 11%, 0.5) 160px);
+    }
+
+    .board {
+      width: 80%;
+      margin: 20px auto;
+      padding: 40px;
+      /*font-size: 0;*/
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    .card {
+      display: inline-block;
+      border: 1px solid #666;
+      border-radius: .3em;
+      text-align: center;
+      /*font-size: 1.2em;*/
+      font-weight: normal;
+      font-family: Arial, sans-serif;
+      position: relative;
+      box-shadow: .2em .2em .5em #333;
+      margin: 10px;
+      /*line-height: 0;*/
+      /*background-image: url('https://s-media-cache-ak0.pinimg.com/736x/ab/b8/eb/abb8eb43cfc7810083110a845c4a6854.jpg');*/
+      background-size: 100%;
+
+      background-color: silver;
+      background-image: radial-gradient(circle at 100% 150%, silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent),
+      radial-gradient(circle at 0 150%, silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent),
+      radial-gradient(circle at 50% 100%, white 10%, silver 11%, silver 23%, white 24%, white 30%, silver 31%, silver 43%, white 44%, white 50%, silver 51%, silver 63%, white 64%, white 71%, transparent 71%, transparent),
+      radial-gradient(circle at 100% 50%, white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent),
+      radial-gradient(circle at 0 50%, white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent);
+      background-size: 100px 50px;
+
+      width: 100%;
+    }
+
+    .card:after {
+      content: '';
+      display: block;
+      padding-bottom: 140%;
+    }
+
+    .card .top {
+      position: absolute;
+      top: 2vw;
+      left: 2vw;
+      right: 2vw;
+      bottom: 2vw;
+      font-size: 5vw;
+      background-color: white;
+    }
+  </style>
 </head>
 
 <body>
 
+  <div class="board">
+
+    <div class="card rock">
+      <div class="top">
+        <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="card">
+      <div class="top">
+        <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="card">
+      <div class="top">
+        <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+      </div>
+    </div>
+
+  </div>
+
 </body>
 
 <script type="text/javascript">
-    var userChoice = prompt("Do you choose rock, paper or scissors?");
+  // var userChoice = prompt("Do you choose rock, paper or scissors?");
 
-console.log("user: " + userChoice);
+  console.log("user: " + userChoice);
 
-    var computerChoice = Math.random();
-    if (computerChoice < 0.34) {
-        computerChoice = "rock";
-    } else if (computerChoice <= 0.67) {
-        computerChoice = "paper";
+  var computerChoice = Math.random();
+  if (computerChoice < 0.34) {
+    computerChoice = "rock";
+  } else if (computerChoice <= 0.67) {
+    computerChoice = "paper";
+  } else {
+    computerChoice = "scissors";
+  }
+  console.log("Computer: " + computerChoice);
+
+  function compare(choice1, choice2) {
+    if (choice1 === choice2) {
+      return "The result is a tie!";
+    }
+
+    if (choice1 === "rock") {
+      if (choice2 === "scissors") {
+        return "rock wins";
+      } else {
+        return "paper wins";
+      }
+    } else if (choice1 === "paper") {
+      if (choice2 === "rock") {
+        return "paper wins";
+      } else {
+        return "scissors wins";
+      }
     } else {
-        computerChoice = "scissors";
-    }
-    console.log("Computer: " + computerChoice);
-
-    function compare(choice1, choice2) {
-        if (choice1 === choice2) {
-            return "The result is a tie!";
-        }
-
-        if (choice1 === "rock") {
-            if (choice2 === "scissors") {
-                return "rock wins";
-            } else {
-                return "paper wins";
-            }
-        } else if (choice1 === "paper") {
-            if (choice2 === "rock") {
-                return "paper wins";
-            } else {
-                return "scissors wins";
-            }
-        } else {
-            if (choice2 === "rock") {
-                return "rock wins";
-            } else {
-                return "scissors wins";
-            }
-        }
-
+      if (choice2 === "rock") {
+        return "rock wins";
+      } else {
+        return "scissors wins";
+      }
     }
 
-    console.log(compare(userChoice, computerChoice));
+  }
+
+  // console.log(compare(userChoice, computerChoice));
 </script>
+
+<script src="https://use.fontawesome.com/8b28861c13.js"></script>
 
 </html>
