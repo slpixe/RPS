@@ -70,17 +70,17 @@
 
   <div class="board">
 
-    <div class="card rock" style="background-image: url('rock.jpg');">
+    <div class="card" data-card="rock" style="background-image: url('rock.jpg');">
       <div class="title">
         Rock
       </div>
     </div>
-    <div class="card" style="background-image: url('paper.jpg');">
+    <div class="card" data-card="paper" style="background-image: url('paper.jpg');">
       <div class="title">
         Paper
       </div>
     </div>
-    <div class="card" style="background-image: url('scissors.jpg');">
+    <div class="card" data-card="scissors" style="background-image: url('scissors.jpg');">
       <div class="title">
         Scissors
       </div>
@@ -91,19 +91,17 @@
 </body>
 
 <script type="text/javascript">
-  // var userChoice = prompt("Do you choose rock, paper or scissors?");
-
-  console.log("user: " + userChoice);
-
-  var computerChoice = Math.random();
-  if (computerChoice < 0.34) {
-    computerChoice = "rock";
-  } else if (computerChoice <= 0.67) {
-    computerChoice = "paper";
-  } else {
-    computerChoice = "scissors";
+  function computerSelect() {
+    var computerChoice = Math.random();
+    if (computerChoice < 0.34) {
+      computerChoice = "rock";
+    } else if (computerChoice <= 0.67) {
+      computerChoice = "paper";
+    } else {
+      computerChoice = "scissors";
+    }
+    return computerChoice;
   }
-  console.log("Computer: " + computerChoice);
 
   function compare(choice1, choice2) {
     if (choice1 === choice2) {
@@ -132,7 +130,25 @@
 
   }
 
-  // console.log(compare(userChoice, computerChoice));
+  function eventClickCard(e) {
+    if (e.target !== e.currentTarget) {
+      var clickedItem = e.target;
+      var userChoice = clickedItem.getAttribute('data-card');
+      var computerChoice = computerSelect();
+
+      console.clear();
+      console.log('User selected: ' + userChoice);
+      console.log("Computer selected: " + computerChoice);
+
+      console.log(compare(userChoice, computerChoice));
+
+    }
+    e.stopPropagation();
+  }
+
+  //Events
+  var board = document.getElementsByClassName('board')[0];
+  board.addEventListener("click", eventClickCard);
 </script>
 
 </html>
