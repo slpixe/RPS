@@ -38,6 +38,7 @@
       transition: 0.25s;
       border: 1px solid #666;
       cursor: pointer;
+      user-select: none;
     }
 
     .card:hover {
@@ -60,7 +61,6 @@
       background-color: rgba(255, 255, 255, 0.7);
       color: black;
       mix-blend-mode: lighten;
-      user-select: none;
     }
 
     .result {
@@ -98,9 +98,7 @@
 
   </div>
 
-  <div class="result">
-    You Win - Rock beats Scissors
-  </div>
+  <div class="result"></div>
 
 </body>
 
@@ -118,27 +116,28 @@
   }
 
   function compare(choice1, choice2) {
+
     if (choice1 === choice2) {
       return "The result is a tie!";
     }
 
     if (choice1 === "rock") {
       if (choice2 === "scissors") {
-        return "rock wins";
+        return "You Win - Rock beats Scissors";
       } else {
-        return "paper wins";
+        return "You Lose - Paper beats Rock";
       }
     } else if (choice1 === "paper") {
       if (choice2 === "rock") {
-        return "paper wins";
+        return "You Win - Paper beats Rock";
       } else {
-        return "scissors wins";
+        return "You Lose - Scissors beat Paper";
       }
     } else {
       if (choice2 === "rock") {
-        return "rock wins";
+        return "You Lose - Rock beats Scissors";
       } else {
-        return "scissors wins";
+        return "You Win - Scissors beats Paper";
       }
     }
 
@@ -156,11 +155,14 @@
       var userChoice = clickedItem.getAttribute('data-card');
       var computerChoice = computerSelect();
 
-      console.clear();
-      console.log('User selected: ' + userChoice);
-      console.log("Computer selected: " + computerChoice);
+      var elResults = document.getElementsByClassName('result')[0];
 
-      console.log(compare(userChoice, computerChoice));
+      // console.clear();
+      // console.log('User selected: ' + userChoice);
+      // console.log("Computer selected: " + computerChoice);
+
+      // console.log(compare(userChoice, computerChoice));
+      elResults.textContent = compare(userChoice, computerChoice);
 
     }
     e.stopPropagation();
