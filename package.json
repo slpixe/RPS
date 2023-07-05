@@ -1,0 +1,15 @@
+{
+  "name": "rps",
+  "version": "1.0.0",
+  "description": "Just a little RPS game, messing with JS, and adding some html to it",
+  "main": "index.js",
+  "scripts": {
+    "run": "http-server ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
